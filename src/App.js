@@ -4,7 +4,9 @@ import './style.css'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { };
+    this.state = { 
+      textoFrase: '',
+     };
 
     this.frases = [
       'Siga os bons e aprenda com eles.', 'O bom-senso vale mais do que muito conhecimento.', 
@@ -19,8 +21,14 @@ class App extends Component {
 
   }
 
-  quebraBiscoito() {
-    alert('Click Ok !')
+  quebraBiscoito() {;
+    let state = this.state;
+
+    let randonNumber = Math.floor(Math.random() * this.frases.length);
+
+    state.textoFrase = '"'+ this.frases[randonNumber]+'"'
+
+    this.setState(state);
 
   }
 
@@ -32,7 +40,7 @@ class App extends Component {
         
         <Botao nome='Abrir biscoito' acaoBtn={this.quebraBiscoito} />
 
-        <h3 className='textoFrase' > Frase número 1 aleatória... </h3>
+        <h3 className='textoFrase' > {this.state.textoFrase} </h3>
       </div>
     )   
     
