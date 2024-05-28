@@ -1,63 +1,35 @@
-import React , { Component } from  'react' ;
-import './style.css'
+import React, { Component } from 'react';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      textoFrase: '',
-     };
 
-    this.frases = [
-      'Siga os bons e aprenda com eles.', 'O bom-senso vale mais do que muito conhecimento.', 
- 'O riso é a menor distância entre duas pessoas.', 
- 'Deixe de lado as preocupações e seja feliz.',
- 'Realize o óbvio, pense no improvável e conquiste o impossível.',
- 'Acredite em milagres, mas não dependa deles.',
- 'A maior barreira para o sucesso é o medo do fracasso.'
-    ]
+  constructor( props ) {
+    super( props );
+    this.state = {
 
-    this.quebraBiscoito = this.quebraBiscoito.bind(this);
+    }
 
   }
 
-  quebraBiscoito() {;
-    let state = this.state;
-
-    let randonNumber = Math.floor(Math.random() * this.frases.length);
-
-    state.textoFrase = '"'+ this.frases[randonNumber]+'"'
-
-    this.setState(state);
-
-  }
-
-
-  render() {
-    return(
-      <div className='container' >
-        <img src={require('./assects/biscoito.png')} className='img'  alt=''></img> 
-        
-        <Botao nome='Abrir biscoito' acaoBtn={this.quebraBiscoito} />
-
-        <h3 className='textoFrase' > {this.state.textoFrase} </h3>
-      </div>
-    )   
-    
-  }
-}
-
-class Botao extends Component {
-  render() {
-    return(
+  render () {
+    return (
       <div>
-        <button onClick={ this.props.acaoBtn } > {this.props.nome} </button>       
+        <img src={ require( './assects/biscoito.png' ) } alt='' />
+        <Botao />
       </div>
 
     )
   }
 }
 
+class Botao extends Component {
+  render() {
+    return (
+      <div>
+        <button>Quebra biscoito</button>   
+      </div>
+    )
+  }
+}
 
 
-export default App ;
+export default App;
