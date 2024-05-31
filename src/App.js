@@ -1,4 +1,4 @@
-import { toHaveDisplayValue } from '@testing-library/jest-dom/matchers';
+
 import React, { Component } from 'react' ;
 class App extends Component {
 
@@ -10,10 +10,15 @@ class App extends Component {
 
     }
 
-    this.numeros = this.numeros.bind(this);
+    this.valor = this.valor.bind(this);
   }
 
-  numeros () {
+  valor () {
+    let state = this.state;
+
+    let numeroAleatorio = Math.floor(Math.random());
+
+
     
   }
 
@@ -24,7 +29,7 @@ class App extends Component {
 
         {/* Atribuindo conteúdo do component secundário */}
         <CompTest titulo='Hello World !'  />
-        <RandonNumber valor={this.numeros} />
+        <RandonNumber  numeros={this.valor} nome='Números Aleatórios'  />
       </div>
     )
   }
@@ -36,7 +41,9 @@ class CompTest extends Component {
       <div>
         {/* Cria-se a props no component secundário
         e atribui conteúdo pelo component primário */}
-        { this.props.titulo } 
+        <h2>
+        { this.props.titulo }
+        </h2>
 
       </div>
     )
@@ -48,6 +55,8 @@ class RandonNumber extends Component {
     return(
       <div>
         {this.props.numeros}
+        <button > {this.props.nome} </button>
+        <label> {this.props.valores} </label>
       </div>
     )
   }
