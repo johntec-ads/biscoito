@@ -14,12 +14,15 @@ class App extends Component {
   }
 
   valor () {
-    let state = this.state;
-
-    let numeroAleatorio = Math.floor(Math.random());
-
-
-    
+    /* 1- Criamos uma let para obter os state */
+    let states = this.state;
+    /* 2- Criamos uma let para obter os números aleatórios */
+    /* 3- Usamos o metodo Math.random, para criar um número aleatório, a cada ação do button */
+    let randomNumber = Math.floor(Math.random() * 1000 );
+    /* Usamos o let state criada,com a adição da state presente no constructor para obter o valor */
+    states.numeroAleatorio = randomNumber;
+    /* Atualizo a state com o metodo setState(states) */
+    this.setState(states);    
   }
 
   render() {
@@ -29,7 +32,7 @@ class App extends Component {
 
         {/* Atribuindo conteúdo do component secundário */}
         <CompTest titulo='Hello World !'  />
-        <RandonNumber  numeros={this.valor} nome='Números Aleatórios'  />
+        <RandonNumber  acaoBotao={this.valor} buttonName='Números Aleatórios'  />
       </div>
     )
   }
@@ -54,9 +57,10 @@ class RandonNumber extends Component {
   render() {
     return(
       <div>
-        {this.props.numeros}
-        <button > {this.props.nome} </button>
-        <label> {this.props.valores} </label>
+        
+        <button onClick={this.props.acaoBotao} >{this.props.buttonName}</button>
+        <label> <h3> {this.numeroAleatorio} </h3> </label>
+          
       </div>
     )
   }
