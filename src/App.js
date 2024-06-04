@@ -19,8 +19,14 @@ class App extends Component {
 }
 
 geraFrase() {
-  let aleatorio = Math.floor(Math)
+  let estados = this.state;//Centralizo as state
 
+  let geraNum = Math.floor(Math.random() * this.frases.length );//Números aleatórios na quantidade do array de frases.
+
+  estados.frase = this.frases[geraNum];//state de frase recebe uma frase na posicão do número gerado
+
+  this.setState(estados)//atualizo a state que esta atribuida hà variável estados.
+  //Aqui todas as states são atualizada,porém, somente uma teve alteração.
 
 }
 
@@ -30,7 +36,7 @@ geraFrase() {
       <div>
         <h1>BISCOITO DA SORTE...</h1>
         <img src={require('./assects/biscoito.png')} alt=''/>
-        <Botao nome='Quebrar Biscoito' acaoBtn={this.geraFrase} />
+        <Botao nome='Quebrar Biscoito' acaoBtn={this.geraFrase} resultado={this.state.frase} />
       </div>
     )
   }
@@ -40,7 +46,9 @@ class Botao extends Component {
   render() {
     return(
       <div>
-        <button onClick={this.props.acaoBtn} > {this.props.nome} </button>
+        <button onClick={this.props.acaoBtn} > 
+        {this.props.nome} </button>
+        <h3> {this.props.resultado} </h3> 
       </div>
     )
   }
